@@ -42,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			removeListItem(id) {
+			removeListItem: id => {
 				const newInputArray = getStore().inputArray.filter((input, index) => index != id);
 				setStore({
 					inputArray: newInputArray
@@ -59,7 +59,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.error("Error:", error));
 			},
 
-			addToListButton(e) {
+			addToListButton: e => {
 				let userInput = getStore().userInput;
 				if (userInput) {
 					let newItem = { label: userInput, done: false };
@@ -80,7 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => console.log("Success:", response))
 					.catch(error => console.error("Error:", error));
 			},
-			addToListEnter(task) {
+			addToListEnter: task => {
 				const store = getStore();
 
 				let newItem = { label: task, done: false };
@@ -98,7 +98,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(response => console.log("Success:", response))
 					.catch(error => console.error("Error:", error));
+			},
+			markDone: ind => {
+				const newInputArray = getStore().inputArray.map((input, index) => {
+					if (index == ind) {
+						input.done = !input.done;
+						return input;
+					} else {
+						return input;
+					}
+				});
+				setStore({ inputArray: newInputArray });
+				fetch(getStore().url, {
+					method: "PUT", // or 'POST'
+					body: JSON.stringify(newInputArray), // data can be `string` or {object}!
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(res => res.json())
+					.then(response => console.log("Success:", response))
+					.catch(error => console.error("Error:", error));
 			}
+
 			// setUserInput(event) {
 			// 	setStore({
 			// 		userInput: getStore().userInput + event.target.value

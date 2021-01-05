@@ -39,10 +39,11 @@ export const Home = () => {
 				<ol className="col-4 mx-auto light ">
 					{store.inputArray.map((listItem, index) => {
 						return (
-							<li key={index}>
+							<li key={index} className={listItem.done ? "doneClass" : "unDoneClass"}>
 								{listItem.label}{" "}
-								<input className="float-left d-flex-inline" type="checkbox" key={index} />
+								{/* <input className="float-left d-flex-inline" type="checkbox" key={index} /> */}
 								<i className="fas float-right fa-ban" onClick={() => actions.removeListItem(index)} />
+								<i className="far float-left fa-check-square" onClick={() => actions.markDone(index)} />
 							</li>
 						);
 					})}
