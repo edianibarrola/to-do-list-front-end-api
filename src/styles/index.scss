@@ -1,3 +1,86 @@
+@import "~bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
 /* 
-    General Styles
+    You can write your own styles here...
+    
+    
+    ...Or you can use the import command to include 
+    other sylesheets into your bunde as well, e.j:
+    
+    import 'relative/path/to/stylesheet.scss';
 */
+h1 {
+    font-family: 'Monoton', cursive;
+}
+ol {
+    list-style-type: none;
+    margin-top:5%;
+    
+-webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0); 
+box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
+
+}
+li {
+    padding:10%;
+    
+}
+ol li:hover {
+background-color: #72ddf7 !important;
+}
+ol li{
+    background-color:#fdc5f5;
+    color:#b388eb;
+    text-align: center;
+    border-top: 5px dashed #3B2667;
+}
+ol li:nth-child(2n+3){
+    background-color:#fdc5f5;
+    color:#b388eb;
+    text-align: center;
+    border-top: 5px dashed #f7aef8;
+}
+
+ol li:nth-child(even){
+    background-color:#f7aef8;
+    color:#8093f1;
+    border-top: 5px dashed #fdc5f5;
+    text-align: center;
+}
+ol li:nth-last-child(1) {
+    border-bottom: 5px dashed #3B2667;
+}
+body  {
+    background-image: linear-gradient( 135deg, #3B2667 10%, #BC78EC 100%);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 100vh;
+    color:#72ddf7;
+}
+.addButton{
+    background-color: #3B2667;
+    color:#fdc5f5;
+    border: 2px solid #72ddf7;
+    border-radius: 5px;
+    text-align: center;
+    padding-top:4px;
+}
+input[type=text] {
+    border:none;
+    background-color: #fdc5f5;
+    border: 2px solid #72ddf7;
+    border-radius: 5px;
+}
+input[type=text]:focus {
+    border:none;
+    background-color: #72ddf7;
+    border: 2px solid #b388eb;
+    border-radius: 5px;
+    color:#b388eb;
+}
+input[type=checkbox] {
+    border:none;
+    background-color: #fdc5f5;
+    border: 2px solid #72ddf7;
+    border-radius: 5px;
+}
