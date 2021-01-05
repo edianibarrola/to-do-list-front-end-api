@@ -13,7 +13,13 @@
 h1 {
     font-family: 'Monoton', cursive;
 }
+div ol{
+    height:50vh; width:20%;
+    overflow:hidden; 
+    overflow-y:scroll;
+}
 ol {
+    
     list-style-type: none;
     margin-top:5%;
     
@@ -85,5 +91,7 @@ input[type=checkbox] {
     border-radius: 5px;
 }
 .doneClass{
-    text-decoration: line-through;
+    text-decoration: line-through !important;
+    background-color: lightblue !important;
+    color:darkgray !important; 
 }
