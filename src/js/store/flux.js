@@ -43,9 +43,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			removeListItem(id) {
+				const newInputArray = getStore().inputArray.filter((input, index) => index != id);
 				setStore({
-					inputArray: getStore().inputArray.filter((input, index) => index != id)
+					inputArray: newInputArray
 				});
+				fetch(getStore().url, {
+					method: "PUT", // or 'POST'
+					body: JSON.stringify(newInputArray), // data can be `string` or {object}!
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(res => res.json())
+					.then(response => console.log("Success:", response))
+					.catch(error => console.error("Error:", error));
 			},
 
 			addToListButton(e) {
@@ -69,24 +80,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => console.log("Success:", response))
 					.catch(error => console.error("Error:", error));
 			},
-			addToListEnter(e) {
+			addToListEnter(task) {
 				const store = getStore();
-				let userInput = getStore().userInput;
 
-				if (e.keyCode == 13 && userInput) {
-					let newItem = { label: userInput, done: false };
-					let newInputArray = store.inputArray.concat(newItem);
-					setStore({
-						inputArray: newInputArray,
-						userInput: ""
-					});
-				}
-			},
-			setUserInput(event) {
+				let newItem = { label: task, done: false };
+				let newInputArray = store.inputArray.concat(newItem);
 				setStore({
-					userInput: getStore().userInput + event.target.value
+					inputArray: newInputArray
 				});
+				fetch(getStore().url, {
+					method: "PUT", // or 'POST'
+					body: JSON.stringify(newInputArray), // data can be `string` or {object}!
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(res => res.json())
+					.then(response => console.log("Success:", response))
+					.catch(error => console.error("Error:", error));
 			}
+			// setUserInput(event) {
+			// 	setStore({
+			// 		userInput: getStore().userInput + event.target.value
+			// 	});
+			// }
 		}
 	};
 };

@@ -17,11 +17,20 @@ export const Home = () => {
 						aria-label="Large"
 						aria-describedby="inputGroup-sizing-sm"
 						value={userInput}
-						onChange={actions.setUserInput}
-						//onChange={e => setUserInput(e.target.value)}
-						onKeyUp={() => actions.addToListEnter(userInput)}
+						onChange={e => setUserInput(e.target.value)}
+						onKeyUp={e => {
+							if (e.keyCode == 13) {
+								actions.addToListEnter(userInput);
+								setUserInput("");
+							}
+						}}
 					/>
-					<button className="input-group-append addButton" onClick={() => actions.addToListButton(userInput)}>
+					<button
+						className="input-group-append addButton"
+						onClick={() => {
+							actions.addToListEnter(userInput);
+							setUserInput("");
+						}}>
 						ADD it up!
 					</button>
 				</div>
