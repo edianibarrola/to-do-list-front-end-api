@@ -47,6 +47,7 @@ export const Home = () => {
 						);
 					})}
 				</ol>
+				<h3 className="mx-auto text-center">Tasks {store.inputArray.length}</h3>
 			</div>
 		</div>
 	);
